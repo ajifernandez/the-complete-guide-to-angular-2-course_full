@@ -1,0 +1,3 @@
+[submodule "prj-start"]
+	path = prj-start
+	url = git@github.com:ajifernandez/the-complete-guide-to-angular-2-course-project.git
