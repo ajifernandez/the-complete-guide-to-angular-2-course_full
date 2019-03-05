@@ -1,6 +1,7 @@
-import { Observable } from "rxjs";
-import { Resolve, RouterStateSnapshot, ActivatedRoute } from "@angular/router";
-import { ServersService } from "../servers.service";
+import { Observable } from 'rxjs';
+import { Resolve, RouterStateSnapshot, ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { ServersService } from '../servers.service';
+import { Injectable } from '@angular/core';
 
 interface Server {
   id: number;
@@ -8,13 +9,14 @@ interface Server {
   status: string;
 }
 
+@Injectable()
 export class ServerResolver implements Resolve<Server> {
-  constructor(private serversService: ServersService) {}
+  constructor(private serversService: ServersService) { }
 
   resolve(
-    route: ActivatedRoute,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<Server> | Promise<Server> | Server {
-    return this.serversService.getServer(+route.params["id"]);
+    return this.serversService.getServer(+route.params['id']);
   }
 }
